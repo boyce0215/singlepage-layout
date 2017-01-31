@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zw-Hant-TW">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,inital-scale=1.0,minmum-scale=1.0"/>
+    <title>Single Page Layout</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="header">
+      <p class="site-title-sub">Web desginer's portfolio</p>
+      <h1 class="site-title">HI, MY NAME IS...</h1>
+      <p class="site-description">Check out some of my works</p>
+      <div class="buttons"><a href="#about" class="button">LEARN MORE</a><a href="#contact" class="button button-showy">SEND MESSAGE</a></div>
+    </header>
+    <section id="about" class="about">
+      <h2 class="heading">ABOUT ME</h2>
+      <p class="about-text">初次見面，你好。本人目前自學網頁設計以及UI/UX設計。<br>我從淡江大學資管系畢業後，就在行銷公司擔任專案企劃。現在則是在家進修。</p>
+      <p class="about-text">這個網站是練習設計一頁式的網頁	。<br>並符合 RWD 響應式設計，使用樣板語言 jade/sass 來做管理。</p>
+    </section>
+    <section class="works">
+      <h2 class="heading">WORKS</h2>
+      <div class="works-wrapper">
+        <div class="work-box tree"><img src="images/tree.jpg" alt="" class="work-image"/>
+          <div class="work-description">
+            <div class="work-description-inner">
+              <p class="work-text">開始製作第一個案例。<br>開始簡單的說明。<br>使用的工具：XXX, XXX, XXX<br><a href="#" class="button button-ghost">READ MORE</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="work-box building"><img src="images/building.jpg" alt="" class="work-image"/>
+          <div class="work-description">
+            <div class="work-description-inner">
+              <p class="work-text">開始製作第二個案例。<br>開始簡單的說明。<br>使用的工具：XXX, XXX, XXX<br><a href="#" class="button button-ghost">READ MORE</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="work-box lake"><img src="images/lake.jpg" alt="" class="work-image"/>
+          <div class="work-description">
+            <div class="work-description-inner">
+              <p class="work-text">開始製作第三個案例。<br>開始簡單的說明。<br>使用的工具：XXX, XXX, XXX<br><a href="#" class="button button-ghost">READ MORE</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="work-box sky"><img src="images/sky.jpg" alt="" class="work-image"/>
+          <div class="work-description">
+            <div class="work-description-inner">
+              <p class="work-text">開始製作第四個案例。<br>開始簡單的說明。<br>使用的工具：XXX, XXX, XXX<br><a href="#" class="button button-ghost">READ MORE</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="skills">
+      <h2 class="heading">MY SKILLS</h2>
+      <div class="skills-wrapper">
+        <div class="skill-box"><i class="skill-icon fa fa-lightbulb-o"></i>
+          <div class="skill-title">IDEA</div>
+          <p class="skill-text">我喜歡思考事情。<br>也喜歡研究與嘗試新事物。<br>特別喜歡關注教育相關的議題。</p>
+        </div>
+        <div class="skill-box"><i class="skill-icon fa fa-paint-brush"></i>
+          <div class="skill-title">DESGIN</div>
+          <p class="skill-text">熟悉 AI 勝過 PS。<br>擅長畫一些小 icon。<br>最近開始接觸一些 UI/UX 的設計觀念。</p>
+        </div>
+        <div class="skill-box"><i class="skill-icon fa fa-code"></i>
+          <div class="skill-title">CODING</div>
+          <p class="skill-text">擅長語言 HTML/CSS。<br>能夠使用 jQuery來做一些動畫。<br>未來想開始研究前端框架Vue.js。</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact">
+      <h2 class="heading">CONTACT</h2>
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="NAME"/>
+        <textarea name="message" placeholder="MESSAGE"></textarea>
+        <input type="submit" value="SEND"/>
+      </form>
+    </section>
+    <footer class="footer">© sample site</footer>
+    <div id="gotop">TOP</div>
+    <script src="lib/placeholders.min.js"></script>
+    <script>
+      $(document).ready(function (){ //jquery等文檔載入完執行
+      	$(".buttons a").on("click",function (event){
+      		if(this.hash != ""){ //如果網頁的＃值不是空的時
+      			event.preventDefault();
+      			var hash = this.hash;
+      			$("html,body").animate({ //.animate({styles},speed,easing,callback)
+      				scrollTop:$(hash).offset().top},//移動到#hash的座標的top值
+      				900,
+      				function(){window.location.hash = hash;
+      			});
+      		}
+      	});
+      });
+      $(function(){
+      	$("#gotop").click(function(){
+      		$("html,body").animate({
+      			scrollTop:0
+      		},1000);
+      	});
+      	$(window).scroll(function(){
+      		if($(this).scrollTop()>200){
+      			$("#gotop").stop().fadeTo('fast',1);
+      		}else{
+      			$("#gotop").stop().fadeOut('fast');
+      		}
+      	});
+      });
+    </script>
+  </body>
+</html>

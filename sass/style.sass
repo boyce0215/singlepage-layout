@@ -1,0 +1,308 @@
+@charset "UTF-8"
+
+$color_white: #fff
+$color_bg1: #151515
+$color_bg2: #383634
+$color_gray: #888
+$color_black: #333
+$color_bt1: #afa58d
+$color_bt2: #f1b400
+$color_icon: #f1b400
+html
+	font-size: 62.5%
+*,*::before,*::after
+	box-sizing: border-box
+body
+	background: $color_bg1 url('../images/bg.png') no-repeat fixed //設定fixed可以使圖片不跟著卷軸滾動
+	background-size: cover
+	color: $color_white
+	text-align: center
+	font-size: 1.4rem
+	font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif
+/*header*/
+.header
+	padding: 170px 30px 80px
+.site-title-sub
+	margin: 0 0 30px
+	letter-spacing: 1px
+	font-size: 2.2rem
+	&::after,&::before
+		content: ""
+		display: inline-block
+		width: 140px
+		height: 2px
+		margin: 0 30px
+		background-color: $color_white
+		vertical-align: middle
+.site-title
+	margin: 50px 0 40px
+	font-size: 7.6rem
+.site-description
+	margin-bottom: 50px
+	color: $color_gray
+	font-size: 1.6rem
+.button
+	display: inline-block
+	width: 200px
+	padding: 20px
+	border-radius: 4px
+	background-color: $color_bt1
+	color: $color_white
+	text-decoration: none
+	letter-spacing: 1px
+	font-size: 1.2rem
+	margin: 10px
+	&:hover
+		opacity: 0.9
+.button-showy
+	background-color: $color_bt2
+/*about*/
+.about
+	padding: 80px 30px
+	background-color: $color_white
+	color: $color_black
+.heading
+	position: relative //使擬元素可以設定位置
+	display: inline-block
+	margin: 30px 0 15px
+	padding-bottom: 15px
+	letter-spacing: 2px
+	font-size: 4rem
+	&::after,&::before
+		content: ""
+		border: 1px solid
+		display: inline-block
+		width: 0.3em
+		height: 0.3em
+		vertical-align: 0.2em
+		margin: 0 0.5em
+		-webkit-transform: rotate(45deg)
+		-ms-transform: rotate(45deg)
+		transform: rotate(45deg)
+		/*線條*/
+		// position: absolute
+		// content: ""
+		// left: 0 //讓擬元素與父元素寬度一樣
+		// right: 0
+		// bottom: 0
+		// border-bottom: 1px solid #999
+	&::before
+		// bottom: 5px
+.about-text
+	margin: 30px 0
+	line-height: 2.5
+/*work*/
+.works
+	padding: 80px 0
+	background-color: $color_bg2
+.works-wrapper
+	display: table
+	width: 100%
+	margin-top: 60px
+	table-layout: fixed //使display: table-cell內容寬度不同時，也可以讓寬度均等
+.work-box
+	position: relative
+	display: table-cell
+	overflow: hidden
+	&::after//預設為行內元素
+		content: ""
+		position: absolute
+		width: 100%
+		height: 50% //當position: absolute或fixed時，就算父元素沒有設定高度，也可以指定height值
+		top: 50%
+		left: 0
+		background: no-repeat
+		background-size: 100% 100%
+		opacity: 0.2
+		transform: scaleY(-1)//設定上下反轉一倍
+	&:nth-child(odd)//將奇數的元素上下顛倒
+		.work-image
+			margin: 60% 0 0
+		.work-description,&::after
+			top: 0
+	/*設定滑鼠移入圖片效果*/
+	img
+		transition: -webkit-transform 0.5s ease-in-out
+		transition: -ms-transform 0.5s ease-in-out
+		transition: transform 0.5s ease-in-out
+	&:hover img
+		-webkit-transform: scale(1.1)
+		-ms-transform: scale(1.1)
+		transform: scale(1.1)
+	&:nth-child(odd) img
+		-webkit-transform-origin: top center
+		-ms-transform-origin: top center
+		transform-origin: top center
+	&:nth-child(even) img
+		-webkit-transform-origin: bottom center
+		-ms-transform-origin: bottom center
+		transform-origin: bottom center
+.tree::after
+	background-image: url('../images/tree.jpg')
+.building::after
+	background-image: url('../images/building.jpg')
+.lake::after
+	background-image: url('../images/lake.jpg')
+.sky::after
+	background-image: url('../images/sky.jpg')
+.work-image
+	display: block
+	width: 100%
+	margin: 0 0 60% //用margin確保下面的高度 60%為上方影像的寬高比得出
+.work-description
+	position: absolute
+	top: 50%
+	left: 0
+	width: 100%
+	height: 50%
+	z-index: 1
+	overflow-y: auto
+.work-description-inner
+	display: table
+	width: 100%
+	height: 100%
+	padding: 20px
+.work-text
+	display: table-cell
+	vertical-align: middle
+	font-size: 1.2rem
+	line-height: 2
+	.button
+		width: 60
+		margin-top: 20px
+		padding: 3px
+.button-ghost
+	border: 1px solid $color_white
+	background-color: rgba($color_white, 0.15)
+/*skills*/
+.skills
+	padding: 80px 0
+	background-color: $color_white
+	color: $color_black
+.skills-wrapper
+	width: 80%
+	display: table
+	margin: 50px auto 0
+	table-layout: fixed
+.skill-box
+	display: table-cell
+.skill-icon
+	width: 150px
+	height: 150px
+	font-size: 8rem
+	color: $color_icon
+	border: 4px solid
+	border-radius: 50%
+	margin-bottom: 30px
+	line-height: 142px //150-8(上下border的寬度)=142
+.skill-title
+	margin: 0 20px 20px
+	font-size: 2rem
+.skill-text
+	margin: 0 20px
+	line-height: 2
+/*contact*/
+.contact
+	padding: 80px 0 150px
+.contact-form
+	width: 50%
+	margin: 50px auto 0
+	input[type=text],textarea
+		display: block
+		width: 100%
+		margin-bottom: 10px
+		padding: 15px
+		outline: none //消除醒目提示
+		border: 1px solid rgba($color_white, 0.4)
+		background-color: rgba($color_white, 0.05)
+		border-radius: 0//因為瀏覽器不同，textarea會有圓角
+		color: $color_white
+		&:focus
+			box-shadow: 0 0 8px rgba($color_white, 0.5) inset
+	textarea
+		height: 150px
+	input[type=submit]
+		display: block
+		margin: 40px auto 0
+		padding: 15px
+		width: 200px
+		border: 1px solid rgba($color_white, 0.4)
+		background-color: transparent
+		border-radius: 5px
+		color: rgba($color_white, 0.6)
+		cursor: pointer
+		&:hover
+			background-color: rgba($color_white, 0.05)
+/*footer*/
+.footer
+	padding: 12px 0
+	font-size: 1.3rem
+#gotop
+	width: 50px
+	height: 50px
+	font-size: 2rem
+	line-height: 50px
+	text-align: center
+	color: $color_white
+	background: $color_bg2
+	position: fixed
+	right: 20px
+	bottom: 20px
+	display: none
+	cursor: pointer
+/*smart iphone*/
+@media (max-width: 1024px) 
+	body
+		background-image: none
+@media (max-width: 768px) 
+	body
+		font-size: 1.3rem
+	.heading
+		font-size: 2.5rem
+	/*header*/
+	.header
+		padding-top: 60px
+	.site-title-sub
+		font-size: 1.7rem
+		&::before,&::after
+			display: block
+			width: 80%
+			margin: 10px auto
+	.site-title
+		margin-top: 35px
+		font-size: 5rem
+	.button:hover
+		opacity: 1
+	/*about*/
+	.about-text
+		line-height: 1.8
+	/*work*/
+	.work-wrapper,.work-box
+		display: block
+	.work-image
+		display: none //不顯示影像
+	.work-description
+		position: relative
+	.work-box::after
+		top: 0
+		height: 100%
+		background-size: cover
+	/*skill*/
+	.skill-wrapper,.skill-box
+		display: block
+	.skill-icon
+		width: 100px
+		height: 100px
+		line-height: 92px
+		font-size: 5rem
+	.skill-box
+		margin: 40px auto
+	.skill-text
+		margin: 0
+	/*contact*/
+	.contact
+		padding-bottom: 80px
+	.contact-form
+		width: 80%
+		
+
